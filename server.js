@@ -75,6 +75,10 @@ const Product = mongoose.model('Product', ProductSchema);*/
 app.use("/api/auth", authRoutes);
 app.use("/api/template", templateRoutes);
 
+app.get('/api/products', async (req, res) => {
+    return res.status(200).json({ message: "Hi" });
+    //res.send('Hi') 
+});
 // --- API Endpoint for Products ---
 /*app.get('/api/products', async (req, res) => {
     try {
