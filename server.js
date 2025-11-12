@@ -23,7 +23,7 @@ const PRODUCT_COLLECTION_NAME = 'products';
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+//const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
@@ -260,6 +260,6 @@ app.use((req, res) => {
 });
 
 // IMPORTANT: Use default export for Vercel Serverless Functions when using ES Modules
-//export default app; 
+export default app; 
 //module.exports = app;
-app.listen(PORT, ()=> console.log(`Server started on ${PORT}`));
+//app.listen(PORT, ()=> console.log(`Server started on ${PORT}`));
