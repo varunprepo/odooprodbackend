@@ -35,10 +35,13 @@ app.use(cors({
   }));
 
 // --- MongoDB Connection ---
-mongoose.connect(process.env.MONGODB_URI, {
+/*mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB successfully connected.'))
+  .catch(err => console.error('MongoDB connection error:', err))*/
+
+mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB successfully connected.'))
   .catch(err => console.error('MongoDB connection error:', err))
 
 // nodemailer transporter
@@ -255,5 +258,8 @@ app.use((req, res) => {
   console.log("404 Not Found:", req.originalUrl);
   res.status(404).json({ message: "Not found" });
 });
+
+// IMPORTANT: Use default export for Vercel Serverless Functions when using ES Modules
+export default app; 
 
 //app.listen(PORT, ()=> console.log(`Server started on ${PORT}`));
