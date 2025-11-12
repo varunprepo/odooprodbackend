@@ -40,10 +40,30 @@ app.use(cors({
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB successfully connected.'))
-  .catch(err => console.error('MongoDB connection error:', err))*/
+  .catch(err => console.error('MongoDB connection error:', err))
 
 mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB successfully connected.'))
-  .catch(err => console.error('MongoDB connection error:', err))
+  .catch(err => console.error('MongoDB connection error:', err))*/
+
+// Example Mongoose Connection Setup
+mongoose.connect(process.env.MONGODB_URI)
+.then(() => {
+    // SUCCESS CHECK
+    console.log('MongoDB connection established successfully.');
+    
+    // CRUCIAL: Check the name of the connected database
+    console.log(`Connected to database: ${mongoose.connection.name}`); 
+
+    if (mongoose.connection.name !== 'odoocarddb') {
+        console.error('DATABASE MISMATCH: The application is connected to the wrong database!');
+    }
+    
+    // Start server logic here...
+  })
+  .catch(err => {
+    // FAILURE CHECK
+    console.error('MongoDB connection error:', err);
+  });
 
 // nodemailer transporter
 //secure: SMTP_PORT === 465,
