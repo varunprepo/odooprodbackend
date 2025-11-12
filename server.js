@@ -46,7 +46,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB succes
   .catch(err => console.error('MongoDB connection error:', err))*/
 
 // Example Mongoose Connection Setup
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect("mongodb+srv://service830:GSsoec4ulLyWycFy@cluster0.aqtkwmd.mongodb.net/odoocarddb?retryWrites=true&w=majority") //process.env.MONGODB_URI)
 .then(() => {
     // SUCCESS CHECK
     console.log('MongoDB connection established successfully.');
