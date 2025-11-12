@@ -8,7 +8,7 @@ import templateRoutes from "./routes/templateRoutes.js";
 import http from 'http'; // http is needed to create the server object explicitly
 import nodemailer from 'nodemailer';
 import User from "./models/User.js";
-import Product from "./models/Product.js";
+//import Product from "./models/Product.js";
 import crypto from "crypto";
 
 dotenv.config();
@@ -85,7 +85,7 @@ app.use("/api/template", templateRoutes);
     //res.send('Hi') 
 });*/
 // --- API Endpoint for Products ---
-app.get('/api/products', async (req, res) => {
+/*app.get('/api/products', async (req, res) => {
     try {
         const search = req.query.search;
         const query = {};
@@ -132,7 +132,7 @@ app.get('/api/products', async (req, res) => {
         console.error('Error fetching products:', error);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
-});
+});*/
 
 // register
 /*app.post("/api/auth/register", async (req, res) => {
