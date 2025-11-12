@@ -8,6 +8,7 @@ import templateRoutes from "./routes/templateRoutes.js";
 import http from 'http'; // http is needed to create the server object explicitly
 import nodemailer from 'nodemailer';
 import User from "./models/User.js";
+import Product from "./models/Product.js";
 import crypto from "crypto";
 
 dotenv.config();
@@ -64,6 +65,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB succes
     default_code: { type: String, index: true }, // SKU
     barcode: { type: String, index: true },
     list_price: Number,
+    id: Number,
     qty_available: Number, // Preferred stock field
     free_qty: Number, // Fallback stock field
     description_sale: String,
@@ -78,12 +80,12 @@ const Product = mongoose.model('Product', ProductSchema);*/
 app.use("/api/auth", authRoutes);
 app.use("/api/template", templateRoutes);
 
-app.get('/api/products', async (req, res) => {
+/*app.get('/api/products', async (req, res) => {
     return res.status(200).json({ message: "Hi" });
     //res.send('Hi') 
-});
+});*/
 // --- API Endpoint for Products ---
-/*app.get('/api/products', async (req, res) => {
+app.get('/api/products', async (req, res) => {
     try {
         const search = req.query.search;
         const query = {};
@@ -121,12 +123,14 @@ app.get('/api/products', async (req, res) => {
         // and THEN limit the resulting subset for the client.
         const products = await Product.find(query).limit(50); 
         res.json(products);
+        return res.status(200).json({ message: "Hi Prods" });
+
 
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
-});*/
+});
 
 // register
 /*app.post("/api/auth/register", async (req, res) => {

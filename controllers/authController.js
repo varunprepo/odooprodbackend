@@ -16,7 +16,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 const ACCESS_EXPIRES = process.env.ACCESS_TOKEN_EXPIRES_IN || "10m";
 const REFRESH_EXPIRES = process.env.REFRESH_TOKEN_EXPIRES_IN || "7d";
-const PRODUCT_COLLECTION_NAME = 'products';
+//const PRODUCT_COLLECTION_NAME = 'products';
 
 if (!JWT_SECRET || !JWT_REFRESH_SECRET) {
   console.error("FATAL: JWT_SECRET or JWT_REFRESH_SECRET not set in .env");
@@ -144,7 +144,7 @@ export const login = async (req, res) => {
   }
 };
 
-/* ----------------- Searched Products ----------------- */
+/* ----------------- Searched Products ----------------- 
 export const products = async (req, res) => {
     try {
         const search = req.query.search;
@@ -190,7 +190,7 @@ export const products = async (req, res) => {
         console.error('Error fetching products:', error);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
-};
+};*/
 
 
 // ✅ Controller function
