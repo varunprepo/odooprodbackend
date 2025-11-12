@@ -122,9 +122,11 @@ app.get('/api/products', async (req, res) => {
         // Fetch products based on the constructed query (searches across all 2795 records)
         // and THEN limit the resulting subset for the client.
         const products = await Product.find(query).limit(50); 
-        res.json(products);
-        return res.status(200).json({ message: "Hi Prods" });
-
+        if(products.length!==0){
+            res.json(products);
+        } else {
+            return res.status(200).json({ message: "No Prods" });
+        }
 
     } catch (error) {
         console.error('Error fetching products:', error);
