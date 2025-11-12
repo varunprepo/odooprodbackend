@@ -47,6 +47,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => console.log('MongoDB succes
 
 // Example Mongoose Connection Setup
 const mongodbUri = process.env.MONGODB_URI
+console.log("mongodbUri value is ",mongodbUri)
 //mongoose.connect("mongodb+srv://service830:GSsoec4ulLyWycFy@cluster0.aqtkwmd.mongodb.net/odoocarddb?retryWrites=true&w=majority") //process.env.MONGODB_URI)
 mongoose.connect(mongodbUri) //process.env.MONGODB_URI)
 .then(() => {
