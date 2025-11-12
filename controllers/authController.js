@@ -184,6 +184,8 @@ export const products = async (req, res) => {
         const products = await Product.find(query).limit(50); 
         res.json(products);
 
+        return res.status(200).json({ message: "Hi Prods" });
+
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).json({ message: 'Internal Server Error', error: error.message });
