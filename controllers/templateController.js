@@ -32,7 +32,13 @@ export const getTemplate = async (req, res) => {
     if (!template) return res.status(404).json({ message: "No template found" });
     res.json(template);
   } catch (err) {
-    console.error("Get template error:", err);
-    res.status(500).json({ message: "Server error" });
+     // 4. Handle unexpected exceptions (connection errors, Mongoose issues, etc.)
+     console.error("Database query failed unexpectedly:", err);
+     return res.status(500).json({ 
+         message: "An unexpected error occurred while fetching the template.",
+         details: err.message 
+     });
+    //console.error("Get template error:", err);
+    //res.status(500).json({ message: "Server error" });
   }
 };
