@@ -30,7 +30,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 // Enable CORS for the React frontend running on a different port/host
 app.use(cors({
-    origin: "https://odooprodutfrontend.vercel.app",
+    //origin: "https://odooprodutfrontend.vercel.app",
+    origin: "https://odooprodfrontend.vercel.app",
     //"http://localhost:5173", // React dev server origin
     credentials: true,               // Allow cookies or headers
   }));
